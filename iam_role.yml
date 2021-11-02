@@ -1,0 +1,19 @@
+Resources:
+  myRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      Description: IAM role for EC2 instance
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: 
+          - Effect: Allow
+            Principal: 
+              Service: 
+                - 'ec2.amazonaws.com'
+            Action: 
+              - 'sts:AssumeRole'
+      Description: Role to provide read access to EC2
+      ManagedPolicyArns: 
+        - arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
+      MaxSessionDuration: 3600
+      Path: '/'
